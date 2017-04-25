@@ -1,0 +1,26 @@
+hash: 573d2d7fa30b95bee0370e056f90e98bf6ae890315a6181b64b2bf8330a53298
+updated: 2017-04-25T10:45:52.956837515Z
+imports:
+- name: github.com/mattn/go-runewidth
+  version: 14207d285c6c197daabb5c9793d63e7af9ab2d50
+- name: github.com/moul/http2curl
+  version: 4e24498b31dba4683efb9d35c1c8a91e2eda28c8
+- name: github.com/parnurzeal/gorequest
+  version: 5ba0c8579b72c0577d482e07d3d0f01731641ca7
+- name: github.com/pkg/errors
+  version: ff09b135c25aae272398c51a07235b90a75aa4f0
+- name: github.com/Sirupsen/logrus
+  version: 10f801ebc38b33738c9d17d50860f484a0988ff5
+- name: github.com/urfave/cli
+  version: ab403a54a148f2d857920810291539e1f817ee7b
+- name: golang.org/x/net
+  version: da118f7b8e5954f39d0d2130ab35d4bf0e3cb344
+  subpackages:
+  - publicsuffix
+- name: golang.org/x/sys
+  version: 9f30dcbe5be197894515a338a9bda9253567ea8f
+  subpackages:
+  - unix
+- name: gopkg.in/cheggaaa/pb.v1
+  version: b6229822fa186496fcbf34111237e7a9693c6971
+testImports: []
