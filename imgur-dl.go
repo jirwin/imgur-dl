@@ -18,7 +18,7 @@ import (
 	"github.com/urfave/cli"
 )
 
-const Version = "0.0.2"
+const Version = "0.0.3"
 
 func run(c *cli.Context) error {
 	var clientId string
