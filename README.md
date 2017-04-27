@@ -1,6 +1,8 @@
 # imgur-dl
 Download all of the images in an imgur gallery
 
+[![CircleCI](https://circleci.com/gh/jirwin/imgur-dl.svg?style=svg)](https://circleci.com/gh/jirwin/imgur-dl)
+
 ```
 NAME:
    imgur-dl - Download all of the images in a imgur gallery
