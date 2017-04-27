@@ -18,6 +18,8 @@ import (
 	"github.com/urfave/cli"
 )
 
+const Version = "0.0.2"
+
 func run(c *cli.Context) error {
 	var clientId string
 	if !c.IsSet("clientId") {
@@ -94,8 +96,8 @@ func run(c *cli.Context) error {
 func main() {
 	app := cli.NewApp()
 	app.Name = "imgur-dl"
-	app.Version = "0.0.1"
-	app.Usage = "Download all of the images in a imgur gallery"
+	app.Version = Version
+	app.Usage = "Download all of the images in a imgur gallery."
 	app.Action = run
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
