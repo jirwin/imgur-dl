@@ -1,2 +1,5 @@
 .idea
 imgur-dl
+dist
+releases
+publish.sh
