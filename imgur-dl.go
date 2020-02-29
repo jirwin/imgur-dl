@@ -1,26 +1,27 @@
 package main
 
 import (
-	"fmt"
-
-	pb "gopkg.in/cheggaaa/pb.v1"
-
-	"os"
-
-	"path/filepath"
-
 	"errors"
-
+	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 
-	log "github.com/Sirupsen/logrus"
-	"github.com/jirwin/imgur-dl/imgur"
+	"go.uber.org/zap"
+
 	"github.com/urfave/cli"
+	"gopkg.in/cheggaaa/pb.v1"
+
+	"github.com/jirwin/imgur-dl/imgur"
 )
 
 const Version = "0.0.3"
 
 func run(c *cli.Context) error {
+	log, err := zap.NewDevelopment()
+	if err != nil {
+		return err
+	}
 	var clientId string
 	if !c.IsSet("clientId") {
 		return errors.New("Missing required argument: --clientId")
@@ -65,6 +66,7 @@ func run(c *cli.Context) error {
 
 	for _, img := range gallery.Images {
 		sem <- true
+
 		go func(img *imgur.Image) {
 			defer func() {
 				<-sem
@@ -72,13 +74,13 @@ func run(c *cli.Context) error {
 			}()
 
 			if skipNsfw && img.Nsfw {
-				log.Infof("Skipping nsfw image: %s", img.Link)
+				log.Info("Skipping nsfw image", zap.String("img_url", img.Link))
 				return
 			}
 
 			err := client.DownloadImage(img.Link, filepath.Join(downloadPath, img.Id+".jpg"))
 			if err != nil {
-				log.Errorf("Unable to download image: %s", img.Link)
+				log.Error("Unable to download image", zap.String("img_url", img.Link), zap.Error(err))
 			}
 
 		}(img)
